@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>一个简单的二分逼近的小工具</title>
+    <script>
+        var minim, maxim, sub, res;
+        function displayResult()
+        {
+            document.getElementById("result").innerHTML = "现在的结果是：" + res;
+        }
+        function initial()
+        {
+            minim = document.getElementById("minimum").value;
+            maxim = document.getElementById("maximum").value;
+            sub = ((Number(maxim) - Number(minim)) / 4);
+            res = ((Number(maxim) + Number(minim)) / 2);
+            displayResult();
+        }
+        function makeItSmaller()
+        {
+            res = Number(res) - Number(sub);
+            sub = Number(sub) / 2;
+            displayResult();
+        }
+        function makeItLarger()
+        {
+            res = Number(res) + Number(sub);
+            sub = Number(sub) / 2;
+            displayResult();
+        }
+    </script>
+    </head>
+    <p>请在左侧的方框填入最小值，右侧的方框填入最大值</p>
+    <p>如果拟合得到的图像比原图像紧凑，你需要一个更小的参数，反之则反。<br>
+        参数越大图像越紧凑，参数越小图像越胖</p>
+    <input type="number" value="把我覆盖为最小值" id="minimum">
+    <input type="number" value="把我覆盖为最大值" id="maximum">
+    <button onclick="initial()">填完最小最大值之后点我</button>
+    <p id="result"></p><br>
+    <button onclick="makeItSmaller()" style="opacity: 1">让结果更小！</button>
+    <nobr>&nbsp</nobr>
+    <button onclick="makeItLarger()" style="opacity: 1">让结果更大！</button>
+    <br><br><br><br><br><br><br>
+    <h3>注意！</h3>
+    <p>这玩意儿没有任何保障，请确保你在输入时第一个值小于第二个值，请按正常顺序点击按钮。<br>
+        出任何问题不管啊！</p>
+
+</html>
