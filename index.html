@@ -17,6 +17,8 @@
             sub = ((Number(maxim) - Number(minim)) / 4);
             res = ((Number(maxim) + Number(minim)) / 2);
             displayResult();
+            document.getElementById("mis").setAttribute("style", "opacity: 1")
+            document.getElementById("mil").setAttribute("style", "opacity: 1")
         }
         function makeItSmaller()
         {
@@ -35,13 +37,13 @@
     <p>请在左侧的方框填入最小值，右侧的方框填入最大值</p>
     <p>如果拟合得到的图像比原图像紧凑，你需要一个更小的参数，反之则反。<br>
         参数越大图像越紧凑，参数越小图像越胖</p>
-    <input type="number" value="把我覆盖为最小值" id="minimum">
-    <input type="number" value="把我覆盖为最大值" id="maximum">
+    <input type="number" id="minimum">
+    <input type="number" id="maximum">
     <button onclick="initial()">填完最小最大值之后点我</button>
     <p id="result"></p><br>
-    <button onclick="makeItSmaller()" style="opacity: 1">让结果更小！</button>
+    <button id="mis" onclick="makeItSmaller()" style="opacity: 0">让结果更小！</button>
     <nobr>&nbsp</nobr>
-    <button onclick="makeItLarger()" style="opacity: 1">让结果更大！</button>
+    <button id="mil" onclick="makeItLarger()" style="opacity: 0">让结果更大！</button>
     <br><br><br><br><br><br><br>
     <h3>注意！</h3>
     <p>这玩意儿没有任何保障，请确保你在输入时第一个值小于第二个值，请按正常顺序点击按钮</p>
