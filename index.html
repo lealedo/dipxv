@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>一个简单的二分逼近的小工具</title>
+    <script>
+        var minim, maxim, sub, res;
+        function displayResult()
+        {
+            document.getElementById("result").innerHTML = "现在的结果是：" + res;
+        }
+        function initial()
+        {
+            minim = document.getElementById("minimum").value;
+            maxim = document.getElementById("maximum").value;
+            sub = ((Number(maxim) - Number(minim)) / 4);
+            res = ((Number(maxim) + Number(minim)) / 2);
+            displayResult();
+            document.getElementById("mis").setAttribute("style", "opacity: 1")
+            document.getElementById("mil").setAttribute("style", "opacity: 1")
+        }
+        function makeItSmaller()
+        {
+            res = Number(res) - Number(sub);
+            sub = Number(sub) / 2;
+            displayResult();
+        }
+        function makeItLarger()
+        {
+            res = Number(res) + Number(sub);
+            sub = Number(sub) / 2;
+            displayResult();
+        }
+    </script>
+    </head>
+    <p>请在左侧的方框填入最小值，右侧的方框填入最大值，以确定一个范围</p>
+    <input type="number" id="minimum">
+    <input type="number" id="maximum">
+    <button onclick="initial()">填完最小最大值之后点我</button>
+    <p id="result"></p><br>
+    <button id="mis" onclick="makeItSmaller()" style="opacity: 0">让结果更小</button>
+    <nobr>&nbsp</nobr>
+    <button id="mil" onclick="makeItLarger()" style="opacity: 0">让结果更大</button>
+    <br><br><br><br><br><br><br>
+</html>
